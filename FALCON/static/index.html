@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Form</title>
+    
+</head>
+<body>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #00990d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #00990d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #00990d;
+}
+
+footer {
+    background-color: #00990d;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+  
+    </style>
+    <header>
+        <h1>Message Form</h1>
+    </header>
+    <main>
+        <form id="messageForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message"></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="outputMessage"></div>
+    </main>
+    <footer>
+        <p>© 2024 Geeks for Geeks. All rights reserved.</p>
+    </footer>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const messageForm = document.getElementById('messageForm');
+    const outputMessage = document.getElementById('outputMessage');
+
+    messageForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(messageForm);
+        const name = formData.get('name');
+        const message = formData.get('message');
+
+        if (name && message) {
+            const outputText = document.createElement('p');
+            outputText.textContent = `${name} : ${message}`;
+            outputMessage.appendChild(outputText);
+            // Clear form fields after submission
+            messageForm.reset();
+        } else {
+            alert('Please fill out both fields.');
+        }
+    });
+});
+
+ 
+    </script>
+</body>
+</html>
